@@ -32,6 +32,9 @@ Vagrant.configure("2") do |config|
     sudo chmod +x phpunit-6.5.phar
     sudo mv phpunit-6.5.phar /usr/local/bin/phpunit
 
+    curl -Ss https://getcomposer.org/installer | php
+    sudo mv composer.phar /usr/bin/composer
+    composer global require wp-coding-standards/wpcs
   SHELL
 
 end
