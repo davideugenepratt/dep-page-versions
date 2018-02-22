@@ -35,6 +35,7 @@ Vagrant.configure("2") do |config|
     curl -Ss https://getcomposer.org/installer | php
     sudo mv composer.phar /usr/bin/composer
     composer global require wp-coding-standards/wpcs
+    sudo phpcs --config-set installed_paths $HOME/.config/composer/vendor/wp-coding-standards/wpcs
   SHELL
 
 end
