@@ -12,11 +12,16 @@
  * @package         Dep_Wp_Page_Versions
  */
 
-spl_autoload_register( function ( $class_name ) {
-	$path = str_replace( "_" , "/" , $class_name);
-	$file_path = plugin_dir_path( __FILE__ ) . 'includes/' . $path . ".php";
-	if( file_exists( $file_path ) ) {
-		require_once( $file_path );
+spl_autoload_register(
+	function ( $qualified_class_name ) {
+			$class_array = explode( '\\', $qualified_class_name );
+			$class_name  = 'class-' . strtolower( array_pop( $class_array ) );
+			$class_path  = implode( '/', $class_array );
+			$path        = $class_path . '/' . $class_name;
+			$file_path   = plugin_dir_path( __FILE__ ) . 'includes/' . $path . '.php';
+		if ( file_exists( $file_path ) ) {
+			require_once( $file_path );
+		}
 	}
-});
-$DepPageVersionsPlugin = new DepPageVersionsPlugin();
+);
+$dep_page_versions = new Dep\PageVersions();

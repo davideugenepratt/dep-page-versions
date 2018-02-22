@@ -1,15 +1,8 @@
 <?php
 
-	$revisions = wp_get_post_revisions();
-
-	$revisions_data = json_decode( get_post_meta( $post->ID , 'dep_revisions_data' , true ) , true );
-
-	// var_dump( json_decode( get_post_meta( $post->ID , 'dep_revisions_data' , true ) ) );
-
-	// var_dump(  get_post_meta( $post->ID , 'dep_revisions_data' , true ) );
-
+	$revisions         = wp_get_post_revisions();
+	$revisions_data    = json_decode( get_post_meta( $post->ID, 'dep_revisions_data', true ), true );
 	$revisions_counter = count( $revisions );
-
 	wp_nonce_field( 'dep_revisions_box', 'dep_revisions_box_nonce' );
 
 ?>
@@ -25,15 +18,15 @@
 
 	</tr>
 
-<?php foreach( $revisions as $key => $revision ) { ?>
+<?php foreach ( $revisions as $key => $revision ) { ?>
 
 	<?php
 
-		$month = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ][ "month" ] : "";
-		$day = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ][ "day" ] : "";
-		$year = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ][ "year" ] : "";
-		$hour = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ][ "hour" ] : "";
-		$minute = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ][ "minute" ] : "";
+		$month  = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ]['month'] : '';
+		$day    = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ]['day'] : '';
+		$year   = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ]['year'] : '';
+		$hour   = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ]['hour'] : '';
+		$minute = ( isset( $revisions_data[ $revision->ID ] ) ) ? $revisions_data[ $revision->ID ]['minute'] : '';
 
 
 	?>
@@ -67,13 +60,13 @@
 			<select class="dep-revisions-control month" name="dep_revisions_publish_month[]" type="text">
 				<?php
 
-					for ($m=1; $m<=12; $m++) {
+				for ( $m = 1; $m <= 12; $m++ ) {
 
-						$selected = ( $month == $m ) ? "selected" : "";
+					$selected = ( $month == $m ) ? 'selected' : '';
 
-                        echo ' <option value="' . $m . '" '. $selected .'>' . date('M', mktime(0,0,0,$m)) . '</option>';
+					echo ' <option value="' . $m . '" ' . $selected . '>' . date( 'M', mktime( 0, 0, 0, $m ) ) . '</option>';
 
-                    }
+				}
 
 				?>
 			</select>
@@ -91,7 +84,7 @@
 
 		<td>
 
-			<?php echo '<a href="revision.php?revision='. $revision->ID .'" class="dep-revisions-preview" ><span class="dashicons dashicons-visibility"></span></a><br>'; ?>
+			<?php echo '<a href="revision.php?revision=' . $revision->ID . '" class="dep-revisions-preview" ><span class="dashicons dashicons-visibility"></span></a><br>'; ?>
 
 		</td>
 
@@ -147,9 +140,9 @@
 
 		width:25px;
 
-    }
+	}
 
-    .dep-revisions-control.minute {
+	.dep-revisions-control.minute {
 
 		width:25px;
 
