@@ -9,7 +9,7 @@
  * Domain Path:     /languages
  * Version:         0.1.0
  *
- * @package         Dep_Page_Versions
+ * @package         Dep_Wp_Page_Versions
  */
 
 spl_autoload_register( function ( $class_name ) {
