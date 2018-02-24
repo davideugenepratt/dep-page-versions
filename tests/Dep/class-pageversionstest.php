@@ -1,14 +1,33 @@
 <?php
 /**
- * Class Dep\PageVersionsTest
+ * Class PageVersionsTest
  *
- * @package Dep_Page_Versions
+ * @package Dep
+ * @category Class
+ * @author   David Pratt
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.github.org/davideugenepratt
  */
+
 namespace Dep;
 require_once( '/vagrant/tests/class-wphelper.php' );
 
+/**
+ * Class PageVersionsTest
+ *
+ * @package Dep
+ */
 class PageVersionsTest extends \WP_UnitTestCase {
+	/**
+	 * Instance of PageVersions that will be created in setUp().
+	 *
+	 * @var PageVersions $page_versions instance of PageVersions to test against.
+	 */
 	public $page_versions;
+
+	/**
+	 * Setup function to get tests setup.
+	 */
 	public function setUp() {
 
 		parent::setup();
@@ -17,6 +36,9 @@ class PageVersionsTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests whether or not $page_versions->add_meta_boxes() gets added to add_meta_boxes hook.
+	 */
 	function test_add_hooks_adds_add_meta_boxes_to_add_meta_boxes_hook() {
 
 		$actual = $this->page_versions->add_hooks();
@@ -27,6 +49,9 @@ class PageVersionsTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests that $page_versions->add_meta_boxes() adds meta box.
+	 */
 	function test_add_meta_boxes_adds_meta_box() {
 
 		$actual = $this->page_versions->add_meta_boxes();

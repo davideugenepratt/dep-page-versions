@@ -1,7 +1,29 @@
 <?php
+/**
+ * Class WP_Helper
+ *
+ * @package Dep
+ * @category Class
+ * @author   David Pratt
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.github.org/davideugenepratt
+ */
 
+/**
+ * Class WP_Helper
+ *
+ * @author   David Pratt
+ */
 class WPHelper {
 
+	/**
+	 * Locates method of class in specified hooks callbacks.
+	 *
+	 * @param string $hook the hook to look for.
+	 * @param string $class the class type to look for.
+	 * @param string $method method name to look for.
+	 * @return bool
+	 */
 	public static function check_hook_for_callback( $hook, $class, $method ) {
 
 		global $wp_filter;
@@ -27,6 +49,17 @@ class WPHelper {
 
 	}
 
+	/**
+	 * Looks for meta box for specific screen.
+	 *
+	 * @param string $screen the screen that meta box should be looked for in.
+	 * @param int    $box_id the box id to be looked for.
+	 * @param string $class the class name to look for.
+	 * @param string $method the method name to look for.
+	 * @param string $context the context to check against.
+	 * @param string $priority the priority to verify against.
+	 * @return bool
+	 */
 	public static function check_screen_for_meta_box( $screen, $box_id, $class, $method, $context, $priority ) {
 
 		global $wp_meta_boxes;
@@ -62,6 +95,16 @@ class WPHelper {
 
 	}
 
+	/**
+	 * Looks at routes and verifies that a method is attached to the route.
+	 *
+	 * @param array  $routes routes to look for.
+	 * @param string $callback_type route method type to look for.
+	 * @param string $http_method http method to look for.
+	 * @param string $class class type to look for.
+	 * @param string $method method name to look for.
+	 * @return bool
+	 */
 	public static function check_route_for_method_and_callback( $routes, $callback_type, $http_method, $class, $method ) {
 
 		foreach ( $routes as $route ) {

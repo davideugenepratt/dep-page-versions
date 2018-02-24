@@ -1,7 +1,19 @@
 <?php
-namespace Dep;
 /**
  * Class PageVersions
+ *
+ * @package  Dep
+ * @author   David Pratt
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     http://www.github.org/davideugenepratt
+ */
+
+namespace Dep;
+
+/**
+ * Class PageVersions
+ *
+ * @package Dep
  */
 class PageVersions {
 
@@ -17,7 +29,7 @@ class PageVersions {
 	}
 
 	/**
-	 *
+	 *  Adds the add_meta_boxes method of PageVersions to add_meta_boxes action
 	 */
 	public function add_hooks() {
 
@@ -26,6 +38,8 @@ class PageVersions {
 	}
 
 	/**
+	 *  Adds meta box
+	 *
 	 * @return mixed
 	 */
 	public function add_meta_boxes() {
@@ -35,7 +49,9 @@ class PageVersions {
 	}
 
 	/**
-	 * @param $post
+	 * Just includes the template
+	 *
+	 * @param WP_Post $post post that is passed to the template.
 	 */
 	public function revisions_meta_box_callback( $post ) {
 

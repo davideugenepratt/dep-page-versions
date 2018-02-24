@@ -2,24 +2,57 @@
 /**
  * Class Dep\PageVersions\ControllerTest
  *
- * @package Dep_Page_Versions
+ * @package Dep\PageVersions
  */
 
 namespace Dep\PageVersions;
 require_once( '/vagrant/tests/class-wphelper.php' );
 
+/**
+ * Class ControllerTest
+ *
+ * @package Dep\PageVersions
+ */
 class ControllerTest extends \WP_UnitTestCase {
 
+	/**
+	 * The post id of the mock post created to test against.
+	 *
+	 * @var string $mock_post_id the id of the mock post created in setUp()
+	 */
 	protected $mock_post_id;
 
+	/**
+	 * An instance of Dep\PageVersions\Controller to test against.
+	 *
+	 * @var Controller $dep_page_versions_controller an instance to test against.
+	 */
 	protected $dep_page_versions_controller;
 
+	/**
+	 *  The id of the mock subscriber crete in setup() to test against.
+	 *
+	 * @var string $subscriber_id id of mock subscriber.
+	 */
 	protected $subscriber_id;
 
+	/**
+	 * Id of mock administrator created in setUp() to test against.
+	 *
+	 * @var string $administrator_id id of mock administrator.
+	 */
 	protected $administrator_id;
 
+	/**
+	 * Revision data created in setUp()
+	 *
+	 * @var array $revisions_data revision data to test against.
+	 */
 	protected $revisions_data;
 
+	/**
+	 * Setup method to ge everything setup before each test
+	 */
 	public function setUp() {
 
 		parent::setup();
@@ -82,6 +115,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests that $dep_page_versions_controller->save_post() is added to save_post hook.
+	 */
 	function test_add_hooks_adds_save_post_to_save_post_hook() {
 
 		$actual = $this->dep_page_versions_controller->add_hooks();
@@ -92,6 +128,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests that $dep_page_versions_controller->save_post() won't save if nonce is not present.
+	 */
 	function test_save_post_wont_save_if_nonce_not_present() {
 
 		unset( $_POST['dep_revisions_box_nonce'] );
@@ -102,6 +141,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests that $dep_page_versions_controller->save_post() won't save if nonce is incorrect.
+	 */
 	function test_save_post_wont_save_if_nonce_not_correct_nonce() {
 
 		$_POST['dep_revisions_box_nonce'] = wp_create_nonce( 'wrong-nonce' );
@@ -114,7 +156,10 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
-	function test_save_rider_saves_post_wont_save_if_user_is_subscriber() {
+	/**
+	 * Tests that $dep_page_versions_controller->save_post() won't save if user is subscriber.
+	 */
+	function test_save_post_wont_save_if_user_is_subscriber() {
 
 		wp_set_current_user( $this->subscriber_id );
 
@@ -128,7 +173,10 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
-	function test_save_rider_saves_dep_revision_data_meta() {
+	/**
+	 * Tests that $dep_page_versions_controller->save_post() saves dep_revision_data to meta.
+	 */
+	function test_save_post_saves_dep_revision_data_meta() {
 
 		$expected = json_encode( $this->revisions_data );
 
@@ -140,6 +188,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
+	/**
+	 * Tests that $dep_page_versions_controller->add_hooks() adds $dep_page_versions_controller->get_Revision to content_filter hook.
+	 */
 	function test_add_hooks_adds_get_revision_to_the_the_content_filter() {
 
 		$actual = $this->dep_page_versions_controller->add_hooks();
@@ -150,18 +201,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 	}
 
-	function test_get_revisions_does_not_alter_content_if_busy_beaver() {
-
-		$_GET['fl_builder'] = '';
-
-		$post = get_post( $this->mock_post_id );
-
-		$actual = $this->dep_page_versions_controller->get_revision( $post->post_content );
-
-		$this->assertEquals( $actual, $post->post_content );
-
-	}
-
+	/**
+	 * Tests that $dep_page_versions_controller->get_revisions() gets posts revisions.
+	 */
 	function test_get_revisions_gets_the_posts_revisions() {
 
 		$post = get_post( $this->mock_post_id );

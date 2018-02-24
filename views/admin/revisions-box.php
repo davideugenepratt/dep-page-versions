@@ -1,9 +1,16 @@
 <?php
+/**
+ * Displays a list of forums.
+ *
+ * @var WP_Post $post the pos tobject passed in from controller.
+ *
+ * @package Dep
+ */
 
-	$revisions         = wp_get_post_revisions();
-	$revisions_data    = json_decode( get_post_meta( $post->ID, 'dep_revisions_data', true ), true );
-	$revisions_counter = count( $revisions );
-	wp_nonce_field( 'dep_revisions_box', 'dep_revisions_box_nonce' );
+$revisions         = wp_get_post_revisions();
+$revisions_data    = json_decode( get_post_meta( $post->ID, 'dep_revisions_data', true ), true );
+$revisions_counter = count( $revisions );
+wp_nonce_field( 'dep_revisions_box', 'dep_revisions_box_nonce' );
 
 ?>
 
