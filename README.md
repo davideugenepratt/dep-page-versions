@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/davideugenepratt/dep-page-versions.svg?branch=master)](https://travis-ci.org/davideugenepratt/dep-page-versions)
+[![Build Status](https://travis-ci.org/davideugenepratt/dep-wp-page-versions.svg?branch=master)](https://travis-ci.org/davideugenepratt/dep-wp-page-versions)
 
 # DEP-Page-Versions Plugin
 
