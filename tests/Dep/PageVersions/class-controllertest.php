@@ -6,7 +6,7 @@
  */
 
 namespace Dep\PageVersions;
-require_once( '/vagrant/tests/class-wphelper.php' );
+require_once( __DIR__ . '/../../class-wphelper.php' );
 
 /**
  * Class ControllerTest
