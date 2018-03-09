@@ -2,18 +2,18 @@
 /**
  * Class PageVersions
  *
- * @package  Dep
+ * @package  DavidEugenePratt
  * @author   David Pratt
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://www.github.org/davideugenepratt
  */
 
-namespace Dep;
+namespace DavidEugenePratt;
 
 /**
  * Class PageVersions
  *
- * @package Dep
+ * @package DavidEugenePratt
  */
 class PageVersions {
 
@@ -24,7 +24,7 @@ class PageVersions {
 
 		$this->add_hooks();
 
-		$controller = new \Dep\PageVersions\Controller();
+		$controller = new \DavidEugenePratt\PageVersions\Controller();
 
 	}
 

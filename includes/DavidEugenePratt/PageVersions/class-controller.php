@@ -2,18 +2,18 @@
 /**
  * Class Controller
  *
- * @package  Dep\PageVersions
+ * @package  DavidEugenePratt\PageVersions
  * @author   David Pratt
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     http://www.github.org/davideugenepratt
  */
 
-namespace Dep\PageVersions;
+namespace DavidEugenePratt\PageVersions;
 
 /**
  * Class Controller
  *
- * @package Dep\PageVersions
+ * @package DavidEugenePratt\PageVersions
  */
 class Controller {
 

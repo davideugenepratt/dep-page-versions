@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
     sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 
-    sudo apt-get install -y mysql-server php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
+    sudo apt-get install -y subversion mysql-server php7.0 libapache2-mod-php7.0 php7.0-cli php7.0-common php7.0-mbstring php7.0-gd php7.0-intl php7.0-xml php7.0-mysql php7.0-mcrypt php7.0-zip
     
     curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
     sudo chmod +x phpcs.phar 

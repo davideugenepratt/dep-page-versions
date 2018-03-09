@@ -4,7 +4,7 @@
  *
  * @var WP_Post $post the pos tobject passed in from controller.
  *
- * @package Dep
+ * @package DavidEugenePratt
  */
 
 $revisions         = wp_get_post_revisions();

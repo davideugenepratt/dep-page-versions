@@ -2,7 +2,7 @@
 /**
  * Class WP_Helper
  *
- * @package Dep
+ * @package DavidEugenePratt
  * @category Class
  * @author   David Pratt
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License

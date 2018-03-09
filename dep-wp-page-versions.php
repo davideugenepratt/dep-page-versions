@@ -24,4 +24,4 @@ spl_autoload_register(
 		}
 	}
 );
-$dep_page_versions = new Dep\PageVersions();
+$dep_page_versions = new DavidEugenePratt\PageVersions();

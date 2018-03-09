@@ -1,17 +1,17 @@
 <?php
 /**
- * Class Dep\PageVersions\ControllerTest
+ * Class DavidEugenePratt\PageVersions\ControllerTest
  *
- * @package Dep\PageVersions
+ * @package DavidEugenePratt\PageVersions
  */
 
-namespace Dep\PageVersions;
+namespace DavidEugenePratt\PageVersions;
 require_once( __DIR__ . '/../../class-wphelper.php' );
 
 /**
  * Class ControllerTest
  *
- * @package Dep\PageVersions
+ * @package DavidEugenePratt\PageVersions
  */
 class ControllerTest extends \WP_UnitTestCase {
 
@@ -23,7 +23,7 @@ class ControllerTest extends \WP_UnitTestCase {
 	protected $mock_post_id;
 
 	/**
-	 * An instance of Dep\PageVersions\Controller to test against.
+	 * An instance of DavidEugenePratt\PageVersions\Controller to test against.
 	 *
 	 * @var Controller $dep_page_versions_controller an instance to test against.
 	 */
@@ -81,7 +81,7 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		wp_set_current_user( $this->administrator_id );
 
-		$this->dep_page_versions_controller = new \Dep\PageVersions\Controller();
+		$this->dep_page_versions_controller = new \DavidEugenePratt\PageVersions\Controller();
 
 		$_POST['dep_revisions_box_nonce'] = wp_create_nonce( 'dep_revisions_box' );
 
@@ -122,9 +122,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = $this->dep_page_versions_controller->add_hooks();
 
-		$has_save_post = \WPHelper::check_hook_for_callback( 'save_post', 'Dep\PageVersions\Controller', 'save_post' );
+		$has_save_post = \WPHelper::check_hook_for_callback( 'save_post', 'DavidEugenePratt\PageVersions\Controller', 'save_post' );
 
-		$this->assertTrue( $has_save_post, "Dep\PageVersions\Controller->add_hooks() does not add save_post() to 'save_post' hook" );
+		$this->assertTrue( $has_save_post, "DavidEugenePratt\PageVersions\Controller->add_hooks() does not add save_post() to 'save_post' hook" );
 
 	}
 
@@ -137,7 +137,7 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = $this->dep_page_versions_controller->save_post( $this->mock_post_id );
 
-		$this->assertTrue( $actual === $this->mock_post_id, "Dep\PageVersions\Controller->save_post( $this->mock_post_id ) does not fail if nonce field is not present." );
+		$this->assertTrue( $actual === $this->mock_post_id, "DavidEugenePratt\PageVersions\Controller->save_post( $this->mock_post_id ) does not fail if nonce field is not present." );
 
 	}
 
@@ -150,7 +150,7 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = $this->dep_page_versions_controller->save_post( $this->mock_post_id );
 
-		$this->assertTrue( $actual === $this->mock_post_id, "Dep\PageVersions\Controller->save_post( $this->mock_post_id ) does not fail if nonce field is wrong nonce." );
+		$this->assertTrue( $actual === $this->mock_post_id, "DavidEugenePratt\PageVersions\Controller->save_post( $this->mock_post_id ) does not fail if nonce field is wrong nonce." );
 
 		$_POST['dep_revisions_box_nonce'] = wp_create_nonce( 'dep_revisions_box' );
 
@@ -167,7 +167,7 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = $this->dep_page_versions_controller->save_post( $this->mock_post_id );
 
-		$this->assertTrue( $actual === $this->mock_post_id, "Dep\PageVersions\Controller->save_post( $this->mock_post_id ) allows users without proper permissions to edit post." );
+		$this->assertTrue( $actual === $this->mock_post_id, "DavidEugenePratt\PageVersions\Controller->save_post( $this->mock_post_id ) allows users without proper permissions to edit post." );
 
 		wp_set_current_user( $this->administrator_id );
 
@@ -184,7 +184,7 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = get_post_meta( $this->mock_post_id, 'dep_revisions_data', true );
 
-		$this->assertEquals( $expected, $actual, "Dep\PageVersions\Controller->save_post( $this->mock_post_id ) does not save the dep_revisions_data meta." );
+		$this->assertEquals( $expected, $actual, "DavidEugenePratt\PageVersions\Controller->save_post( $this->mock_post_id ) does not save the dep_revisions_data meta." );
 
 	}
 
@@ -195,9 +195,9 @@ class ControllerTest extends \WP_UnitTestCase {
 
 		$actual = $this->dep_page_versions_controller->add_hooks();
 
-		$has_get_revision = \WPHelper::check_hook_for_callback( 'the_content', 'Dep\PageVersions\Controller', 'get_revision' );
+		$has_get_revision = \WPHelper::check_hook_for_callback( 'the_content', 'DavidEugenePratt\PageVersions\Controller', 'get_revision' );
 
-		$this->assertTrue( $has_get_revision, "Dep\PageVersions\Controller->add_hooks() does not add get_revision() to 'the_post' hook" );
+		$this->assertTrue( $has_get_revision, "DavidEugenePratt\PageVersions\Controller->add_hooks() does not add get_revision() to 'the_post' hook" );
 
 	}
 
