@@ -55,7 +55,7 @@ class PageVersions {
 	 */
 	public function revisions_meta_box_callback( $post ) {
 
-		include( plugin_dir_path( __FILE__ ) . '../views/admin/revisions-box.php' );
+		include( plugin_dir_path( __FILE__ ) . '../../views/admin/revisions-box.php' );
 
 	}
 
